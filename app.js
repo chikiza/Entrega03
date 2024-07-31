@@ -7,6 +7,12 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
+app.use(express.static(path.join(__dirname, 'public')))
+
+//utilizamos el router
+const router = require('./routes/router')
+app.use(router.routes)
+
 app.get('/', (req, res)=>{
     res.send('dashboard con Node')
 })
